@@ -1,13 +1,10 @@
-import re
 from django.shortcuts import render
 
-# Define the home view
 def home(request):
-  return HttpResponse('<h1>Hello ᓚᘏᗢ</h1>')
+  return render(request, 'home.html')
 
 def about(request):
   return render(request, 'about.html')
-
 
 class Gear:
   def __init__(self, name, brand, description, price):
