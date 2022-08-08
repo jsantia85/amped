@@ -22,21 +22,22 @@
 <section class="card-container">
   {% for gear in gear %}
     <div class="card">
-      <div class="card-content">
-        <div class="card-img-container">
-          <img 
-            src="{% static 'images/electric-guitar-svgrepo-com.svg' %}" 
-            alt="A strat style electric guitar"
-          >
+      <a href="/gear/{{ gear.id }}">
+        <div class="card-content">
+          <div class="card-img-container">
+            <img 
+              src="{% static 'images/electric-guitar-svgrepo-com.svg' %}" 
+              alt="A strat style electric guitar"
+            >
+          </div>
+          <h2 class="card-title">{{ gear.brand }}</h2>
+          {% if gear.price > 0 %}
+            <p>${{ gear.price }} {{ gear.name }}</p>
+          {% else %}
+            <p>A {{ gear.name }}.</p>
+          {% endif %}
+          <p><small>{{ gear.description }}</small></p>
         </div>
-        <h2 class="card-title">{{ gear.brand }}</h2>
-        {% if gear.price > 0 %}
-          <p>${{ gear.price }} {{ gear.name }}</p>
-        {% else %}
-          <p>A {{ gear.name }}.</p>
-        {% endif %}
-        <p><small>{{ gear.description }}</small></p>
-      </div>
     </div>
   {% endfor %}
 </section>
