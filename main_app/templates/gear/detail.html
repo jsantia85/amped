@@ -27,6 +27,10 @@
       <h2>{{ gear.name }}.</h2>
     {% endif %}
     <p>{{ gear.description }}</p>
+    <div class="gear-actions">
+      <a href="{% url 'gear_update' gear.id %}" class="btn warn">Edit</a>
+      <a href="{% url 'gear_delete' gear.id %}" class="btn danger">Delete</a>
+    </div>
   </div>
 </section>
 

@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Gear
 
 def home(request):
@@ -19,3 +19,12 @@ def gear_detail(request, gear_id):
 class GearCreate(CreateView):
   model = Gear
   fields = '__all__'
+  success_url = '/gear/'
+
+class GearUpdate(UpdateView):
+  model = Gear
+  fields = ['brand', 'description', 'price']
+
+class GearDelete(DeleteView):
+  model = Gear
+  success_url = '/gear/'
