@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/form.css' %}"/>
+{% endblock %}
+
+{% block content %}
+
+<div class="page-header">
+  <h1>Add Gear</h1>
+  <img src="{% static 'images/vecteezy_shopping-bag-logo-icon-design-template-vector_7636978.jpg' %}" alt="A shopping bag" id='shopping-bag'/>
+</div>
+<form action="" method="post" class="form-container">
+  {% csrf_token %}
+  <table>
+    {{ form.as_table }}
+  </table>
+  <button type="submit" class="btn submit">Submit!</button>
+</form>
+
+{% endblock %}

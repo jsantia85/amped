@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.views.generic.edit import CreateView
 from .models import Gear
 
 def home(request):
@@ -14,3 +15,7 @@ def gear_index(request):
 def gear_detail(request, gear_id):
   gear = Gear.objects.get(id=gear_id)
   return render(request, 'gear/detail.html', { 'gear': gear})
+
+class GearCreate(CreateView):
+  model = Gear
+  fields = '__all__'
