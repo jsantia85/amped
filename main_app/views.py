@@ -3,6 +3,8 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.auth.views import LoginView
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Gear
 
 class Home(LoginView):
@@ -11,15 +13,17 @@ class Home(LoginView):
 def about(request):
   return render(request, 'about.html')
 
+@login_required
 def gear_index(request):
   gear = Gear.objects.filter(user=request.user)
   return render(request, 'gear/index.html', {'gear': gear})
 
+@login_required
 def gear_detail(request, gear_id):
   gear = Gear.objects.get(id=gear_id)
   return render(request, 'gear/detail.html', { 'gear': gear})
 
-class GearCreate(CreateView):
+class GearCreate(LoginRequiredMixin, CreateView):
   model = Gear
   fields = ['name', 'brand', 'description', 'price']
 
@@ -27,11 +31,11 @@ class GearCreate(CreateView):
     form.instance.user = self.request.user
     return super().form_valid(form)
 
-class GearUpdate(UpdateView):
+class GearUpdate(LoginRequiredMixin, UpdateView):
   model = Gear
   fields = ['brand', 'description', 'price']
 
-class GearDelete(DeleteView):
+class GearDelete(LoginRequiredMixin, DeleteView):
   model = Gear
   success_url = '/gear/'
 
