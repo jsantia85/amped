@@ -8,7 +8,11 @@
 {% block content %}
 
 <div class="page-header">
-  <h1>Add Gear</h1>
+  {% if gear %}
+    <h1>Edit {{gear.name}}</h1>
+  {% else %}
+    <h1>Add Gear</h1>
+  {% endif %}
   <img src="{% static 'images/vecteezy_shopping-bag-logo-icon-design-template-vector_7636978.jpg' %}" alt="A shopping bag" id='shopping-bag'/>
 </div>
 <form action="" method="post" class="form-container">

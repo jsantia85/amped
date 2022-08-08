@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="page-header">
+  <h1>Delete Gear?</h1>
+  <img src="{% static 'images/delete-svgrepo-com.svg' %}" alt="A trash can"/>
+</div>
+<h2>Are you sure you want to delete {{ gear.name }}?</h2>
+
+<form action="" method="POST" class="form">
+  {% csrf_token %}
+  <a 
+    href="{% url 'gear_detail' gear.id %}" 
+    class="btn secondary"
+  >
+    Cancel
+  </a>
+  <button type="submit" class="btn danger">Yes, be gone!</button>
+</form>
+
+{% endblock %}
