@@ -15,6 +15,7 @@ html {
 body {
   margin: 0;
   background-color: #121212;
+  background-image: url("images/caught-in-joy-ptVBlniJi50-unsplash.jpg");
   color: #E7DFDD;
   display: flex;
   flex-direction: column;
@@ -62,6 +63,7 @@ ul {
 main {
   width: 100%;
   padding: 0 10px;
+  color: #F13C20;
 }
 
 h2 {
@@ -182,7 +184,6 @@ nav li {
     padding: 0 15px;
   }
 
-  /* visual fix to help align logo */
   .header-logo-container {
     padding-top: 3px;
   }
@@ -250,7 +251,6 @@ nav li {
   }
 
   .header-logo-container {
-    /* visual fix to help align logo */
     padding-top: 6px;
     width: 256px;
     height: 35px;
