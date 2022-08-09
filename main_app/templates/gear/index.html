@@ -25,10 +25,19 @@
       <a href="{% url 'gear_detail' gear.id %}">
         <div class="card-content">
           <div class="card-img-container">
+            {%if gear.photo.url %}
+              <img 
+                src="{{gear.photo.url}}" 
+                alt="A photo of {{gear.name}}"
+                class="usr-img"
+              >
+            {% else %}
+          
             <img 
               src="{% static 'images/electric-guitar-svgrepo-com.svg' %}" 
               alt="A strat style electric guitar"
             >
+            {% endif %}
           </div>
           <h2 class="card-title">{{ gear.brand }}</h2>
           {% if gear.price > 0 %}

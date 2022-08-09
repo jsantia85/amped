@@ -10,4 +10,5 @@ urlpatterns = [
   path('gear/<int:pk>/update/', views.GearUpdate.as_view(), name='gear_update'),
   path('gear/<int:pk>/delete/', views.GearDelete.as_view(), name='gear_delete'),
   path('accounts/signup/', views.signup, name='signup'),
+  path('gear/<int:gear_id>/add_photo/', views.add_photo, name='add_photo'),
 ]

@@ -13,11 +13,19 @@
 
 <section class="gear-container">
   <div class="gear-img">
-    <img 
-      src="{% static 'images/vecteezy_cute-guitarist-with-headphone-for-logo-icon-and-illustration_.jpg' %}" 
-      alt="Man with guitar"
-      id="guitar-man"
-    >
+    {% if gear.photo.url %}
+      <img 
+      src="{{gear.photo.url}}" 
+      alt="A photo of {{gear.name}}"
+      class="usr-img"
+      >
+    {% else %}
+      <img 
+        src="{% static 'images/vecteezy_cute-guitarist-with-headphone-for-logo-icon-and-illustration_.jpg' %}" 
+        alt="Man with guitar"
+        id="guitar-man"
+      >
+    {% endif %}
   </div>
   <div class="gear-details">
     <h1>{{ gear.brand }}</h1>
@@ -31,6 +39,20 @@
       <a href="{% url 'gear_update' gear.id %}" class="btn warn">Edit</a>
       <a href="{% url 'gear_delete' gear.id %}" class="btn danger">Delete</a>
     </div>
+    <h3>Change {{ gear.name }}'s photo</h3>
+    <p id="file-name"></p>
+    <form 
+      action="{% url 'add_photo' gear.id %}"
+      enctype="multipart/form-data"
+      method="POST"
+    >
+      {% csrf_token %}
+      <label class="btn secondary">
+        Choose photo
+        <input type="file" name="photo-file" id="file-input">
+      </label>
+      <button type="submit" class="btn submit">Upload Photo</button>
+    </form>
   </div>
 </section>
 
