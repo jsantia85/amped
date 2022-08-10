@@ -25,10 +25,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-rkv3sh8tvww96zdxj!-wj__dyql0=#i^lx7_h)9&2*b)#sp7q!'
+SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = env('DEBUG') == 'True' 
+DEBUG_PROPAGATE_EXCEPTIONS = True
 
 ALLOWED_HOSTS = []
 
@@ -138,3 +139,6 @@ LOGIN_URL = 'home'
 LOGIN_REDIRECT_URL = 'gear_index'
 
 LOGOUT_REDIRECT_URL = 'home'
+
+import django_heroku
+django_heroku.settings(locals())
